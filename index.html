@@ -6,13 +6,14 @@
 
   <title>A&M</title>
 
+  <link rel="preload" as="image" href="./photos/photo4.png" fetchpriority="high">
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" type="image/png" href="./photos/icon.png">
 </head>
 
 <body>
 
-  <audio id="loveSong" src="./music/song.mp3" preload="none"></audio>
+  <audio id="loveSong" src="./music/song.mp3" preload="metadata"></audio>
 
 
   <!-- MUSIC BUTTON -->
@@ -93,6 +94,9 @@
         <img
           src="./photos/photo4.png"
           alt="ჩვენი ფოტო"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
         >
 
         <div class="photo-message">
@@ -365,8 +369,10 @@
       >
 
         <img
-          src="./photos/photo1.jpeg"
+          src="./photos/photo1.webp"
           alt="ჩვენი ფოტო"
+          loading="lazy"
+          decoding="async"
         >
 
         <div class="photo-caption">
@@ -384,8 +390,10 @@
       >
 
         <img
-          src="./photos/photo2.jpeg"
+          src="./photos/photo2.webp"
           alt="ჩვენი ფოტო"
+          loading="lazy"
+          decoding="async"
         >
 
         <div class="photo-caption">
@@ -403,8 +411,10 @@
       >
 
         <img
-          src="./photos/photo3.jpeg"
+          src="./photos/photo3.webp"
           alt="ჩვენი ფოტო"
+          loading="lazy"
+          decoding="async"
         >
 
         <div class="photo-caption">
@@ -461,6 +471,96 @@
         </svg>
 
       </button>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- SCRATCH CARD -->
+  <section class="scratch-section">
+
+    <div class="section-heading">
+
+      <span class="section-kicker">
+        პატარა სიურპრიზი
+      </span>
+
+      <h2>
+        რაღაც დაგიმალე
+      </h2>
+
+      <div class="title-decoration">
+        <span></span>
+        <i></i>
+        <span></span>
+      </div>
+
+      <p>
+        თითით ან მაუსით გაფხიკე.
+      </p>
+
+    </div>
+
+
+    <div class="scratch-wrapper">
+
+      <div id="scratchCard" class="scratch-card">
+
+        <div class="scratch-secret">
+
+          <div class="scratch-secret-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
+            </svg>
+          </div>
+
+          <span>
+            მხოლოდ შენთვის
+          </span>
+
+          <h3>
+            ერთი რამ კიდევ...
+          </h3>
+
+          <p>
+            რაც უფრო მეტი დრო გადის,
+            მით უფრო ვრწმუნდები,
+            რომ შენ ჩემი მეორე ნახევარი ხარ.
+          </p>
+
+          <strong>
+            მიყვარხარ.
+          </strong>
+
+        </div>
+
+
+        <canvas
+          id="scratchCanvas"
+          class="scratch-canvas"
+          aria-label="გაფხიკე სიურპრიზის სანახავად"
+        ></canvas>
+
+      </div>
+
+
+      <div id="scratchHint" class="scratch-hint">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M8 13V7.5a2 2 0 0 1 4 0V12"/>
+          <path d="M12 11V6.5a2 2 0 0 1 4 0V12"/>
+          <path d="M16 11V8.5a2 2 0 0 1 4 0V13"/>
+          <path d="M8 12.5 6.5 11a2 2 0 0 0-3 2.5l4.4 5.2A5 5 0 0 0 11.7 20H16a4 4 0 0 0 4-4v-4"/>
+        </svg>
+
+        <span>
+          გაატარე თითი ან მაუსი ბარათზე
+        </span>
+
+      </div>
 
     </div>
 
@@ -771,7 +871,7 @@
       </button>
 
 
-      <img id="modalPhoto" src="" alt="">
+      <img id="modalPhoto" src="" alt="" decoding="async">
 
 
       <h2 id="modalPhotoTitle"></h2>
@@ -1001,7 +1101,7 @@
   </div>
 
 
-  <script src="./script.js"></script>
+  <script src="./script.js" defer></script>
 
 </body>
 </html>
