@@ -4,20 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dea</title>
+  <title>A&M</title>
 
   <link rel="stylesheet" href="./style.css">
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="./photos/icon.png"
-  >
+  <link rel="icon" type="image/png" href="./photos/icon.png">
 </head>
 
 <body>
 
-  <!-- Decorative background -->
+  <audio id="loveSong" src="/music/song.mp3" preload="none"></audio>
+
+
+  <!-- MUSIC BUTTON -->
+  <button
+    id="musicButton"
+    class="music-button"
+    aria-label="მუსიკის ჩართვა"
+  >
+    <svg class="music-play" viewBox="0 0 24 24">
+      <path d="M9 18V6l10-2v12"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="16" cy="16" r="3"/>
+    </svg>
+
+    <svg class="music-pause" viewBox="0 0 24 24">
+      <path d="M8 6v12M16 6v12"/>
+    </svg>
+  </button>
+
+
   <div class="page-decoration decoration-one"></div>
   <div class="page-decoration decoration-two"></div>
 
@@ -34,18 +49,14 @@
           <path d="m3 7 9 7 9-7"/>
         </svg>
 
-        <span>
-          მხოლოდ შენთვის
-        </span>
+        <span>მხოლოდ შენთვის</span>
 
       </div>
 
 
       <h1>
         შენ ხარ ჩემი
-        <span>
-          ყველაზე ლამაზი ამბავი
-        </span>
+        <span>ყველაზე ლამაზი ამბავი</span>
       </h1>
 
 
@@ -56,23 +67,15 @@
       </p>
 
 
-      <button
-        id="storyButton"
-        class="story-button"
-      >
+      <button id="storyButton" class="story-button">
 
-        <span>
-          ჩვენი ამბავი
-        </span>
-
+        <span>ჩვენი ამბავი</span>
 
         <span class="story-button-icon">
-
           <svg viewBox="0 0 24 24">
             <path d="M12 4v14"/>
             <path d="m7 13 5 5 5-5"/>
           </svg>
-
         </span>
 
       </button>
@@ -92,7 +95,6 @@
           alt="ჩვენი ფოტო"
         >
 
-
         <div class="photo-message">
 
           <span class="mini-heart"></span>
@@ -106,7 +108,6 @@
 
       </div>
 
-
       <span class="outline-heart heart-a"></span>
       <span class="outline-heart heart-b"></span>
 
@@ -116,11 +117,80 @@
 
 
 
+  <!-- LIVE COUNTER -->
+  <section class="counter-section" id="counter">
+
+    <div class="section-heading">
+
+      <span class="section-kicker">
+        12 თებერვლიდან
+      </span>
+
+      <h2>
+        ჩვენი დრო ერთად
+      </h2>
+
+      <div class="title-decoration">
+        <span></span>
+        <i></i>
+        <span></span>
+      </div>
+
+      <p>
+        დრო მიდის, მაგრამ ყველაზე კარგი ისაა,
+        რომ ეს დრო ჩვენია.
+      </p>
+
+    </div>
+
+
+    <div class="counter">
+
+      <div class="counter-item">
+        <strong id="days">0</strong>
+        <span>დღე</span>
+      </div>
+
+      <div class="counter-item">
+        <strong id="hours">0</strong>
+        <span>საათი</span>
+      </div>
+
+      <div class="counter-item">
+        <strong id="minutes">0</strong>
+        <span>წუთი</span>
+      </div>
+
+      <div class="counter-item">
+        <strong id="seconds">0</strong>
+        <span>წამი</span>
+      </div>
+
+    </div>
+
+
+    <p class="counter-message">
+      და ყოველი ახალი დღე შენთან კიდევ ერთი ჩვენი დღეა.
+    </p>
+
+
+    <!-- HIDDEN SURPRISE -->
+    <button
+      id="secretButton"
+      class="secret-button"
+      aria-label="პატარა საიდუმლო"
+    >
+      <svg viewBox="0 0 24 24">
+        <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
+      </svg>
+    </button>
+
+  </section>
+
+
+
   <!-- STORY -->
-  <section
-    id="story"
-    class="story-section"
-  >
+  <section id="story" class="story-section">
 
     <div class="section-heading">
 
@@ -128,22 +198,15 @@
         ჩვენი გზა
       </span>
 
-
       <h2>
         ჩვენი ისტორია
       </h2>
 
-
       <div class="title-decoration">
-
         <span></span>
-
         <i></i>
-
         <span></span>
-
       </div>
-
 
       <p>
         ერთი გრძნობა, რომელიც წლებთან ერთად
@@ -153,41 +216,25 @@
     </div>
 
 
-
     <div class="timeline">
 
 
-      <!-- 1 -->
       <article class="timeline-card">
 
         <div class="timeline-number">
           01
         </div>
 
-
         <div class="timeline-icon">
-
           <svg viewBox="0 0 24 24">
-
-            <path
-              d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
-            />
-
-            <circle
-              cx="12"
-              cy="12"
-              r="2.5"
-            />
-
+            <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/>
+            <circle cx="12" cy="12" r="2.5"/>
           </svg>
-
         </div>
-
 
         <h3>
           პირველი ნახვა
         </h3>
-
 
         <p>
           პირველად რომ დაგინახე,
@@ -198,129 +245,81 @@
 
 
 
-      <!-- 2 -->
       <article class="timeline-card">
 
         <div class="timeline-number">
           02
         </div>
 
-
         <div class="timeline-icon">
-
           <svg viewBox="0 0 24 24">
-
-            <circle
-              cx="8.5"
-              cy="8"
-              r="3"
-            />
-
-            <circle
-              cx="16.5"
-              cy="9"
-              r="2.5"
-            />
-
-            <path
-              d="M3 19c.5-4 2.6-6 5.5-6s5 2 5.5 6"
-            />
-
-            <path
-              d="M14 14c4-1 6 1 6.5 5"
-            />
-
+            <circle cx="8.5" cy="8" r="3"/>
+            <circle cx="16.5" cy="9" r="2.5"/>
+            <path d="M3 19c.5-4 2.6-6 5.5-6s5 2 5.5 6"/>
+            <path d="M14 14c4-1 6 1 6.5 5"/>
           </svg>
-
         </div>
-
 
         <h3>
           8 წელი
         </h3>
 
-
         <p>
-          წლები ვმალავდი ამ გრძნობას, მეგობრობა უფრო ღრმა გახდა,
-          მაგრამ ჩემი გრძნობა არსად გამქრალა.
+          წლები ვმალავდი ამ გრძნობას.
+          მეგობრობა უფრო ღრმა ხდებოდა,
+          ჩემი გრძნობა კი არსად ქრებოდა.
         </p>
 
       </article>
 
 
 
-      <!-- 3 -->
       <article class="timeline-card">
 
         <div class="timeline-number">
           03
         </div>
 
-
         <div class="timeline-icon">
-
           <svg viewBox="0 0 24 24">
-
-            <path
-              d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"
-            />
-
+            <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
           </svg>
-
         </div>
 
-
         <h3>
-          ჩვენ
+          12 თებერვალი
         </h3>
 
-
         <p>
-          ორი ადამიანი, რომლებიც ამდენი წლის შემდეგ
-          ერთმანეთთან კიდევ უფრო ახლოს აღმოჩნდნენ.
+          დღე, როცა ბოლოს და ბოლოს
+          გითხარი ის, რასაც ამდენი წელი ვგრძნობდი.
         </p>
 
       </article>
 
 
 
-      <!-- 4 -->
       <article class="timeline-card">
 
         <div class="timeline-number">
           04
         </div>
 
-
         <div class="timeline-icon">
-
           <svg viewBox="0 0 24 24">
-
-            <rect
-              x="4"
-              y="5.5"
-              width="16"
-              height="14"
-              rx="2"
-            />
-
-            <path d="M8 3.5v4M16 3.5v4M4 10h16"/>
-
-            <path d="M9 14.5 11 17l4-5"/>
-
+            <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
+            <path d="M9 11.5c1.2 1.4 4.8 1.4 6 0"/>
           </svg>
-
         </div>
 
-
         <h3>
-          თებერვლიდან
+          14 თებერვალი
         </h3>
 
-
         <p>
-          თებერვლიდან ჩემი ცხოვრების
-          ახალი ფურცელი დაიწყო.
+          ჩვენი პირველი კოცნა.
+          ერთი პატარა წამი,
+          რომელიც არასდროს დამავიწყდება.
         </p>
 
       </article>
@@ -340,98 +339,128 @@
         პატარა მოგონებები
       </span>
 
-
       <h2>
         ჩვენი მომენტები
       </h2>
 
-
       <div class="title-decoration">
-
         <span></span>
-
         <i></i>
-
         <span></span>
-
       </div>
+
+      <p>
+        დააჭირე ფოტოს.
+      </p>
 
     </div>
 
 
-
     <div class="gallery">
 
-
-      <article class="photo-card photo-one">
+      <button
+        class="photo-card photo-one"
+        data-title="შენი გიჟი ხასიათი"
+        data-story="ვგიჟდები შენს გიჟ ხასიათზე. შენთან მოსაწყენი დღე უბრალოდ არ არსებობს."
+      >
 
         <img
           src="./photos/photo1.jpeg"
           alt="ჩვენი ფოტო"
         >
 
-
         <div class="photo-caption">
-
-          <span>
-            01
-          </span>
-
-          <p>
-            ვგიჟდები შენ გიჟ ხასიათზე
-          </p>
-
+          <span>01</span>
+          <p>ვგიჟდები შენს გიჟ ხასიათზე</p>
         </div>
 
-      </article>
+      </button>
 
 
-
-      <article class="photo-card photo-two">
+      <button
+        class="photo-card photo-two"
+        data-title="ჩვენ"
+        data-story="ამ ფოტოს რომ ვუყურებ, კიდევ ერთხელ ვხვდები რამდენად ბედნიერი ვარ, რომ ჩემს ცხოვრებაში ხარ."
+      >
 
         <img
           src="./photos/photo2.jpeg"
           alt="ჩვენი ფოტო"
         >
 
-
         <div class="photo-caption">
-
-          <span>
-            02
-          </span>
-
-          <p>
-            ყოველთვის მეყვარები
-          </p>
-
+          <span>02</span>
+          <p>ყოველთვის მეყვარები</p>
         </div>
 
-      </article>
+      </button>
 
 
-
-      <article class="photo-card photo-three">
+      <button
+        class="photo-card photo-three"
+        data-title="შენს გვერდით"
+        data-story="შენს გვერდით უფრო ამაყი ვარ, უფრო მშვიდი და უბრალოდ უფრო ბედნიერი."
+      >
 
         <img
           src="./photos/photo3.jpeg"
           alt="ჩვენი ფოტო"
         >
 
-
         <div class="photo-caption">
-
-          <span>
-            03
-          </span>
-
-          <p>
-            შენს გვერდით უფრო ამაყი ვარ
-          </p>
-
+          <span>03</span>
+          <p>შენს გვერდით უფრო ამაყი ვარ</p>
         </div>
 
-      </article>
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- RANDOM LOVE REASONS -->
+  <section class="reasons-section">
+
+    <div class="reasons-card">
+
+      <div class="reason-icon">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
+        </svg>
+
+      </div>
+
+
+      <span class="section-kicker">
+        კიდევ ერთი რამ...
+      </span>
+
+
+      <h2>
+        რა მიყვარს შენში?
+      </h2>
+
+
+      <p id="reasonText" class="reason-text">
+        შენი თვალები.
+      </p>
+
+
+      <button id="reasonButton" class="secondary-button">
+
+        <span>
+          კიდევ ერთი
+        </span>
+
+        <svg viewBox="0 0 24 24">
+          <path d="M20 11a8 8 0 1 0-2 5.4"/>
+          <path d="M20 5v6h-6"/>
+        </svg>
+
+      </button>
 
     </div>
 
@@ -446,19 +475,12 @@
     <div class="question-decoration q-two"></div>
 
 
-    <div
-      id="questionBox"
-      class="question-box"
-    >
+    <div id="questionBox" class="question-box">
 
       <div class="question-icon">
 
         <svg viewBox="0 0 24 24">
-
-          <path
-            d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"
-          />
-
+          <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
         </svg>
 
       </div>
@@ -474,16 +496,11 @@
       </h2>
 
 
-
       <div class="answer-buttons">
-
 
         <div class="answer-slot yes-slot">
 
-          <button
-            id="yesButton"
-            class="yes-button"
-          >
+          <button id="yesButton" class="yes-button">
 
             <svg viewBox="0 0 24 24">
               <path d="M5 12.5 10 17l9-10"/>
@@ -498,13 +515,9 @@
         </div>
 
 
-
         <div class="answer-slot no-slot">
 
-          <button
-            id="noButton"
-            class="no-button"
-          >
+          <button id="noButton" class="no-button">
 
             <svg viewBox="0 0 24 24">
               <path d="m7 7 10 10M17 7 7 17"/>
@@ -532,6 +545,106 @@
 
 
 
+  <!-- OPEN WHEN -->
+  <section class="open-when-section">
+
+    <div class="section-heading">
+
+      <span class="section-kicker">
+        პატარა წერილები
+      </span>
+
+      <h2>
+        გახსენი როცა...
+      </h2>
+
+      <div class="title-decoration">
+        <span></span>
+        <i></i>
+        <span></span>
+      </div>
+
+      <p>
+        ზოგიერთი სიტყვა შეიძლება ზუსტად მაშინ დაგჭირდეს,
+        როცა მე შენ გვერდით არ ვიქნები.
+      </p>
+
+    </div>
+
+
+    <div class="open-when-grid">
+
+      <button
+        class="open-when-card"
+        data-title="როცა მოგენატრები"
+        data-text="თუ მოგენატრები, გახსოვდეს — სადაც არ უნდა ვიყო, ჩემი ფიქრები მაინც შენთან მოდის."
+      >
+
+        <svg viewBox="0 0 24 24">
+          <path d="M3 6.5h18v11H3z"/>
+          <path d="m3 7 9 7 9-7"/>
+        </svg>
+
+        <h3>
+          როცა მოგენატრები
+        </h3>
+
+        <span>
+          გახსენი
+        </span>
+
+      </button>
+
+
+      <button
+        class="open-when-card"
+        data-title="როცა ცუდ ხასიათზე იქნები"
+        data-text="ერთი ცუდი დღე ვერასდროს შეცვლის იმას, რამდენად განსაკუთრებული ხარ ჩემთვის. მინდა გახსოვდეს, რომ ყოველთვის შენ გვერდით ვარ და ნებისმიერ დროს შეგიძლია დამირეკო."
+      >
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+          <circle cx="12" cy="12" r="5"/>
+        </svg>
+
+        <h3>
+          როცა ცუდ ხასიათზე იქნები
+        </h3>
+
+        <span>
+          გახსენი
+        </span>
+
+      </button>
+
+
+      <button
+        class="open-when-card"
+        data-title="როცა ჩემზე გაბრაზდები"
+        data-text="თუ ჩემზე გაბრაზებული ხარ, ე.ი რაღაც დავაშავე და ვწუხვარ მაგის გამო. ერთი რამ მაინც არასდროს შეიცვლება — მიყვარხარ და ყოველთვის მინდა, რომ ბედნიერი იყო."
+      >
+
+        <svg viewBox="0 0 24 24">
+          <path d="M5 5h14v11H9l-4 4z"/>
+          <path d="M9 9h6M9 12h4"/>
+        </svg>
+
+        <h3>
+          როცა ჩემზე გაბრაზდები
+        </h3>
+
+        <span>
+          გახსენი
+        </span>
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+
   <!-- LETTER -->
   <section class="letter-section">
 
@@ -545,13 +658,9 @@
         <div class="small-label">
 
           <svg viewBox="0 0 24 24">
-
             <path d="M3 6.5h18v11H3z"/>
-
             <path d="m3 7 9 7 9-7"/>
-
           </svg>
-
 
           <span>
             მხოლოდ შენთვის
@@ -573,23 +682,15 @@
       </div>
 
 
-
-      <button
-        id="openLetter"
-        class="letter-button"
-      >
+      <button id="openLetter" class="letter-button">
 
         <span>
           გახსენი წერილი
         </span>
 
-
         <svg viewBox="0 0 24 24">
-
           <path d="M5 12h14"/>
-
           <path d="m14 7 5 5-5 5"/>
-
         </svg>
 
       </button>
@@ -608,11 +709,7 @@
       <div class="final-icon">
 
         <svg viewBox="0 0 24 24">
-
-          <path
-            d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"
-          />
-
+          <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
         </svg>
 
       </div>
@@ -640,28 +737,62 @@
         მიყვარხარ.
       </strong>
 
+
+      <button id="finalSurpriseButton" class="final-button">
+
+        <span>
+          კიდევ ერთი რამ...
+        </span>
+
+        <svg viewBox="0 0 24 24">
+          <path d="M5 12h14"/>
+          <path d="m14 7 5 5-5 5"/>
+        </svg>
+
+      </button>
+
     </div>
 
   </section>
 
 
 
-  <!-- LETTER MODAL -->
-  <div
-    id="letterModal"
-    class="modal"
-  >
+  <!-- PHOTO MODAL -->
+  <div id="photoModal" class="modal">
+
+    <div class="modal-overlay"></div>
+
+    <div class="photo-modal">
+
+      <button class="close-button modal-close">
+        <svg viewBox="0 0 24 24">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+      </button>
+
+
+      <img id="modalPhoto" src="" alt="">
+
+
+      <h2 id="modalPhotoTitle"></h2>
+
+      <p id="modalPhotoStory"></p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- OPEN WHEN MODAL -->
+  <div id="openWhenModal" class="modal">
 
     <div class="modal-overlay"></div>
 
 
-    <div class="letter-modal">
+    <div class="small-modal">
 
-      <button
-        id="closeLetter"
-        class="close-button"
-        aria-label="დახურვა"
-      >
+      <button class="close-button modal-close">
 
         <svg viewBox="0 0 24 24">
           <path d="m6 6 12 12M18 6 6 18"/>
@@ -670,15 +801,95 @@
       </button>
 
 
+      <div class="modal-icon">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M3 6.5h18v11H3z"/>
+          <path d="m3 7 9 7 9-7"/>
+        </svg>
+
+      </div>
+
+
+      <h2 id="openWhenTitle"></h2>
+
+      <p id="openWhenText"></p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- HIDDEN SURPRISE MODAL -->
+  <div id="secretModal" class="modal">
+
+    <div class="modal-overlay"></div>
+
+
+    <div class="small-modal">
+
+      <button class="close-button modal-close">
+
+        <svg viewBox="0 0 24 24">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+
+      </button>
+
 
       <div class="modal-icon">
 
         <svg viewBox="0 0 24 24">
+          <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
+        </svg>
 
+      </div>
+
+
+      <span class="modal-label">
+        იპოვე...
+      </span>
+
+
+      <h2>
+        პატარა საიდუმლო
+      </h2>
+
+
+      <p>
+        თუ ამას მიაგენი, კიდევ ერთხელ უნდა იცოდე —
+        შენ ჩემი ყველაზე საყვარელი აღმოჩენა ხარ.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- LETTER MODAL -->
+  <div id="letterModal" class="modal">
+
+    <div class="modal-overlay"></div>
+
+
+    <div class="letter-modal">
+
+      <button class="close-button modal-close">
+
+        <svg viewBox="0 0 24 24">
+          <path d="m6 6 12 12M18 6 6 18"/>
+        </svg>
+
+      </button>
+
+
+      <div class="modal-icon">
+
+        <svg viewBox="0 0 24 24">
           <path d="M3 6.5h18v11H3z"/>
-
           <path d="m3 7 9 7 9-7"/>
-
         </svg>
 
       </div>
@@ -695,13 +906,9 @@
 
 
       <div class="modal-separator">
-
         <span></span>
-
         <i></i>
-
         <span></span>
-
       </div>
 
 
@@ -714,16 +921,23 @@
 
       <p>
         ჩვენ მეგობრები ვიყავით,
-        მაგრამ ჩემთვის შენ ყოველთვის
-        მეტი იყავი, რის გამოც გული სხვანაირად ფეთქავდა.
+        მაგრამ ჩემთვის შენ ყოველთვის მეტი იყავი.
+        ის ადამიანი, რომლის დანახვაზეც გული სხვანაირად მიფეთქავდა.
       </p>
 
 
       <p>
         რთული იყო შენი თვალების ყურება და
         არ თქმა იმის, რომ მიყვარხარ.
-        იმ საღამოს, როცა „მეც“ მითხარი,
+        იმ საღამოს, როცა შეყვარებულები გავხდით,
         თავიდან დავიბადე.
+      </p>
+
+
+      <p>
+        14 თებერვალი კი არასდროს დამავიწყდება.
+        ჩვენი პირველი კოცნა და ის წამი,
+        რომლის კიდევ ბევრჯერ გამეორებაც მინდა.
       </p>
 
 
@@ -735,6 +949,51 @@
 
       <strong>
         მიყვარხარ.
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- FULLSCREEN FINAL SURPRISE -->
+  <div id="finalSurprise" class="final-surprise">
+
+    <button id="closeFinalSurprise" class="surprise-close">
+
+      <svg viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18"/>
+      </svg>
+
+    </button>
+
+
+    <div class="surprise-content">
+
+      <svg class="surprise-heart" viewBox="0 0 24 24">
+        <path d="M12 20S4 15.3 4 9.5C4 6.5 6 5 8.3 5c1.7 0 3 1 3.7 2.1C12.7 6 14 5 15.7 5 18 5 20 6.5 20 9.5 20 15.3 12 20 12 20Z"/>
+      </svg>
+
+
+      <span>
+        8 წლის წინ
+      </span>
+
+
+      <h2>
+        შემიყვარდი.
+      </h2>
+
+
+      <p>
+        ყოველდე, როცა შენს თვალებს ვუყურებ, მახსენდება,
+        რომ შენ ჩემი ყველაზე დიდი ბედნიერება ხარ.
+      </p>
+
+
+      <strong>
+        მიყვარდი, მიყვარხარ და მეყვარები.
       </strong>
 
     </div>

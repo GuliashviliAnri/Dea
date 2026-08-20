@@ -16,17 +16,133 @@ const questionMessage =
 const openLetter =
   document.getElementById("openLetter");
 
-const closeLetter =
-  document.getElementById("closeLetter");
+const musicButton =
+  document.getElementById("musicButton");
 
-const letterModal =
-  document.getElementById("letterModal");
+const loveSong =
+  document.getElementById("loveSong");
 
-const modalOverlay =
-  document.querySelector(".modal-overlay");
+const reasonButton =
+  document.getElementById("reasonButton");
+
+const reasonText =
+  document.getElementById("reasonText");
+
+const secretButton =
+  document.getElementById("secretButton");
+
+const finalSurpriseButton =
+  document.getElementById("finalSurpriseButton");
+
+const finalSurprise =
+  document.getElementById("finalSurprise");
+
+const closeFinalSurprise =
+  document.getElementById("closeFinalSurprise");
 
 
 let noClicks = 0;
+
+let currentReason = 0;
+
+
+
+/* =========================
+   LIVE COUNTER
+========================= */
+
+/*
+  12 February 2026
+  Georgian timezone UTC +04:00
+*/
+
+const relationshipStart =
+  new Date(
+    "2026-02-12T00:00:00+04:00"
+  );
+
+
+function updateCounter() {
+
+  const now =
+    new Date();
+
+
+  let difference =
+    now - relationshipStart;
+
+
+  if (difference < 0) {
+    difference = 0;
+  }
+
+
+  const totalSeconds =
+    Math.floor(
+      difference / 1000
+    );
+
+
+  const days =
+    Math.floor(
+      totalSeconds / 86400
+    );
+
+
+  const hours =
+    Math.floor(
+      (totalSeconds % 86400)
+      / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (totalSeconds % 3600)
+      / 60
+    );
+
+
+  const seconds =
+    totalSeconds % 60;
+
+
+  document
+    .getElementById("days")
+    .textContent =
+      days;
+
+
+  document
+    .getElementById("hours")
+    .textContent =
+      String(hours)
+        .padStart(2, "0");
+
+
+  document
+    .getElementById("minutes")
+    .textContent =
+      String(minutes)
+        .padStart(2, "0");
+
+
+  document
+    .getElementById("seconds")
+    .textContent =
+      String(seconds)
+        .padStart(2, "0");
+
+}
+
+
+updateCounter();
+
+setInterval(
+  updateCounter,
+  1000
+);
+
 
 
 /* =========================
@@ -38,10 +154,9 @@ storyButton.addEventListener(
   () => {
 
     document
-      .getElementById("story")
+      .getElementById("counter")
       .scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+        behavior: "smooth"
       });
 
   }
@@ -50,7 +165,150 @@ storyButton.addEventListener(
 
 
 /* =========================
-   "არა" BUTTON
+   MUSIC
+========================= */
+
+musicButton.addEventListener(
+  "click",
+  async () => {
+
+    if (loveSong.paused) {
+
+      try {
+
+        await loveSong.play();
+
+        musicButton
+          .classList
+          .add("playing");
+
+      }
+
+      catch (error) {
+
+        console.log(
+          "Audio could not start:",
+          error
+        );
+
+      }
+
+    }
+
+    else {
+
+      loveSong.pause();
+
+      musicButton
+        .classList
+        .remove("playing");
+
+    }
+
+  }
+);
+
+
+
+loveSong.addEventListener(
+  "ended",
+  () => {
+
+    musicButton
+      .classList
+      .remove("playing");
+
+  }
+);
+
+
+
+/* =========================
+   RANDOM LOVE REASONS
+========================= */
+
+const reasons = [
+
+  "შენი თვალები.",
+
+  "შენი გიჟი ხასიათი.",
+
+  "როგორ იცინი.",
+
+  "როგორ მიყურებ.",
+
+  "შენი ღიმილი.",
+
+  "ის, რომ შენთან საკუთარი თავი ვარ.",
+
+  "შენი სიჯიუტეც კი.",
+
+  "როგორ შეგიძლია ჩვეულებრივი დღე განსაკუთრებული გახადო.",
+
+  "შენი ხმა.",
+
+  "შენთან ყოფნის სიმშვიდე.",
+
+  "ის, რომ ამდენი წლის შემდეგაც ისევ ისე მიყვარხარ.",
+
+  "უბრალოდ შენ — მთლიანად."
+
+];
+
+
+reasonButton.addEventListener(
+  "click",
+  () => {
+
+    let next;
+
+
+    do {
+
+      next =
+        Math.floor(
+          Math.random()
+          * reasons.length
+        );
+
+    }
+
+    while (
+      next === currentReason
+    );
+
+
+    currentReason =
+      next;
+
+
+    reasonText
+      .classList
+      .add("change");
+
+
+    setTimeout(
+      () => {
+
+        reasonText.textContent =
+          reasons[currentReason];
+
+
+        reasonText
+          .classList
+          .remove("change");
+
+      },
+      180
+    );
+
+  }
+);
+
+
+
+/* =========================
+   YES / NO
 ========================= */
 
 noButton.addEventListener(
@@ -61,64 +319,72 @@ noButton.addEventListener(
 
 
     /*
-      რეალური vibration
-      მხარდაჭერილ Android ბრაუზერებზე.
+      Phone vibration where supported.
     */
 
-    if ("vibrate" in navigator) {
+    if (
+      "vibrate"
+      in navigator
+    ) {
 
-      navigator.vibrate([
-        80,
-        40,
-        90
-      ]);
+      navigator.vibrate(
+        [
+          70,
+          35,
+          90
+        ]
+      );
 
     }
 
 
-    /*
-      ვიზუალური shake
-    */
+    noButton
+      .classList
+      .remove("wrong");
 
-    noButton.classList.remove("wrong");
-    questionBox.classList.remove("wrong");
+
+    questionBox
+      .classList
+      .remove("wrong");
 
 
     void noButton.offsetWidth;
 
 
-    noButton.classList.add("wrong");
-    questionBox.classList.add("wrong");
+    noButton
+      .classList
+      .add("wrong");
+
+
+    questionBox
+      .classList
+      .add("wrong");
 
 
     /*
-      "კი" იზრდება.
-      მობილურზე უფრო მცირე ლიმიტი აქვს,
-      რომ "არა"-ს არ გადაეფაროს.
+      YES gets larger every time.
     */
 
     const maxGrowth =
       window.innerWidth <= 600
-        ? 1.50
-        : 1.90;
+        ? 1.55
+        : 2.15;
 
 
     const growth =
       Math.min(
-        1 + noClicks * 0.17,
+        1 + noClicks * 0.18,
         maxGrowth
       );
 
 
-    yesButton.style.setProperty(
-      "--yes-size",
-      growth
-    );
+    yesButton
+      .style
+      .setProperty(
+        "--yes-size",
+        growth
+      );
 
-
-    /*
-      შეტყობინებები
-    */
 
     const messages = [
 
@@ -126,13 +392,13 @@ noButton.addEventListener(
 
       "კიდევ ერთხელ დაფიქრდი.",
 
-      "რატომღაც „კი“ უფრო სწორად გამოიყურება.",
+      "„კი“ რატომღაც უფრო სწორად გამოიყურება.",
 
       "მე მაინც სხვა პასუხს ველოდები.",
 
-      "მგონი პასუხი ორივემ ვიცით.",
+      "პასუხი მგონი ორივემ ვიცით.",
 
-      "კარგი... არჩევანი ნელ-ნელა მარტივდება."
+      "კარგი... ახლა არჩევანი უკვე საკმაოდ მარტივია."
 
     ];
 
@@ -146,15 +412,17 @@ noButton.addEventListener(
       ];
 
 
-    /*
-      shake კლასების მოხსნა
-    */
-
     setTimeout(
       () => {
 
-        noButton.classList.remove("wrong");
-        questionBox.classList.remove("wrong");
+        noButton
+          .classList
+          .remove("wrong");
+
+
+        questionBox
+          .classList
+          .remove("wrong");
 
       },
       450
@@ -165,40 +433,23 @@ noButton.addEventListener(
 
 
 
-/* =========================
-   "კი" BUTTON
-========================= */
-
 yesButton.addEventListener(
   "click",
   () => {
 
-    questionBox.classList.add(
-      "success"
-    );
+    noButton
+      .parentElement
+      .style
+      .display =
+        "none";
 
 
-    /*
-      არა ქრება
-    */
+    yesButton.style
+      .setProperty(
+        "--yes-size",
+        1
+      );
 
-    noButton.parentElement.style.display =
-      "none";
-
-
-    /*
-      კი ნორმალურ ზომაზე ბრუნდება
-    */
-
-    yesButton.style.setProperty(
-      "--yes-size",
-      1
-    );
-
-
-    /*
-      ტექსტის შეცვლა
-    */
 
     yesButton.innerHTML = `
 
@@ -219,7 +470,7 @@ yesButton.addEventListener(
       </svg>
 
       <span>
-        მეც მუდამ შენთან ვიქნები
+        მეც მუდამ ვიქნები
       </span>
 
     `;
@@ -237,82 +488,396 @@ yesButton.addEventListener(
 
 
 /* =========================
-   LETTER MODAL
+   GENERIC MODAL FUNCTIONS
 ========================= */
 
-openLetter.addEventListener(
-  "click",
-  () => {
+function openModal(
+  modal
+) {
 
-    letterModal.classList.add(
-      "show"
-    );
-
-
-    document.body.style.overflow =
-      "hidden";
-
-  }
-);
+  modal
+    .classList
+    .add("show");
 
 
-closeLetter.addEventListener(
-  "click",
-  closeModal
-);
-
-
-modalOverlay.addEventListener(
-  "click",
-  closeModal
-);
-
-
-document.addEventListener(
-  "keydown",
-  (event) => {
-
-    if (
-      event.key === "Escape"
-    ) {
-
-      closeModal();
-
-    }
-
-  }
-);
-
-
-function closeModal() {
-
-  letterModal.classList.remove(
-    "show"
-  );
-
-
-  document.body.style.overflow =
-    "";
+  document.body
+    .classList
+    .add("modal-open");
 
 }
 
 
 
+function closeModal(
+  modal
+) {
+
+  modal
+    .classList
+    .remove("show");
+
+
+  const stillOpen =
+    document.querySelector(
+      ".modal.show"
+    );
+
+
+  if (!stillOpen) {
+
+    document.body
+      .classList
+      .remove("modal-open");
+
+  }
+
+}
+
+
+
+/* Close modal buttons */
+
+document
+  .querySelectorAll(
+    ".modal-close"
+  )
+  .forEach(
+    button => {
+
+      button
+        .addEventListener(
+          "click",
+          () => {
+
+            const modal =
+              button.closest(
+                ".modal"
+              );
+
+
+            closeModal(
+              modal
+            );
+
+          }
+        );
+
+    }
+  );
+
+
+/* Click backdrop */
+
+document
+  .querySelectorAll(
+    ".modal-overlay"
+  )
+  .forEach(
+    overlay => {
+
+      overlay
+        .addEventListener(
+          "click",
+          () => {
+
+            const modal =
+              overlay.closest(
+                ".modal"
+              );
+
+
+            closeModal(
+              modal
+            );
+
+          }
+        );
+
+    }
+  );
+
+
+
+/* ESC */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key
+      !==
+      "Escape"
+    ) {
+      return;
+    }
+
+
+    document
+      .querySelectorAll(
+        ".modal.show"
+      )
+      .forEach(
+        modal => {
+
+          closeModal(
+            modal
+          );
+
+        }
+      );
+
+
+    finalSurprise
+      .classList
+      .remove("show");
+
+
+    document.body
+      .classList
+      .remove("modal-open");
+
+  }
+);
+
+
+
 /* =========================
-   CELEBRATION
+   PHOTO MODAL
 ========================= */
 
-function createCelebration() {
+const photoModal =
+  document.getElementById(
+    "photoModal"
+  );
+
+const modalPhoto =
+  document.getElementById(
+    "modalPhoto"
+  );
+
+const modalPhotoTitle =
+  document.getElementById(
+    "modalPhotoTitle"
+  );
+
+const modalPhotoStory =
+  document.getElementById(
+    "modalPhotoStory"
+  );
+
+
+document
+  .querySelectorAll(
+    ".photo-card"
+  )
+  .forEach(
+    card => {
+
+      card
+        .addEventListener(
+          "click",
+          () => {
+
+            const image =
+              card.querySelector(
+                "img"
+              );
+
+
+            modalPhoto.src =
+              image.src;
+
+
+            modalPhoto.alt =
+              image.alt;
+
+
+            modalPhotoTitle
+              .textContent =
+                card.dataset.title;
+
+
+            modalPhotoStory
+              .textContent =
+                card.dataset.story;
+
+
+            openModal(
+              photoModal
+            );
+
+          }
+        );
+
+    }
+  );
+
+
+
+/* =========================
+   OPEN WHEN
+========================= */
+
+const openWhenModal =
+  document.getElementById(
+    "openWhenModal"
+  );
+
+const openWhenTitle =
+  document.getElementById(
+    "openWhenTitle"
+  );
+
+const openWhenText =
+  document.getElementById(
+    "openWhenText"
+  );
+
+
+document
+  .querySelectorAll(
+    ".open-when-card"
+  )
+  .forEach(
+    card => {
+
+      card
+        .addEventListener(
+          "click",
+          () => {
+
+            openWhenTitle
+              .textContent =
+                card.dataset.title;
+
+
+            openWhenText
+              .textContent =
+                card.dataset.text;
+
+
+            openModal(
+              openWhenModal
+            );
+
+          }
+        );
+
+    }
+  );
+
+
+
+/* =========================
+   SECRET HEART
+========================= */
+
+const secretModal =
+  document.getElementById(
+    "secretModal"
+  );
+
+
+secretButton.addEventListener(
+  "click",
+  () => {
+
+    openModal(
+      secretModal
+    );
+
+  }
+);
+
+
+
+/* =========================
+   LETTER
+========================= */
+
+const letterModal =
+  document.getElementById(
+    "letterModal"
+  );
+
+
+openLetter.addEventListener(
+  "click",
+  () => {
+
+    openModal(
+      letterModal
+    );
+
+  }
+);
+
+
+
+/* =========================
+   FINAL SURPRISE
+========================= */
+
+finalSurpriseButton
+  .addEventListener(
+    "click",
+    () => {
+
+      finalSurprise
+        .classList
+        .add("show");
+
+
+      document.body
+        .classList
+        .add("modal-open");
+
+
+      createCelebration(
+        35
+      );
+
+    }
+  );
+
+
+closeFinalSurprise
+  .addEventListener(
+    "click",
+    () => {
+
+      finalSurprise
+        .classList
+        .remove("show");
+
+
+      document.body
+        .classList
+        .remove("modal-open");
+
+    }
+  );
+
+
+
+/* =========================
+   CELEBRATION HEARTS
+========================= */
+
+function createCelebration(
+  amount = 18
+) {
 
   for (
     let i = 0;
-    i < 18;
+    i < amount;
     i++
   ) {
 
     setTimeout(
       createFloatingHeart,
-      i * 80
+      i * 75
     );
 
   }
@@ -337,8 +902,8 @@ function createFloatingHeart() {
 
     <svg
       viewBox="0 0 24 24"
-      width="24"
-      height="24"
+      width="25"
+      height="25"
     >
 
       <path
@@ -362,40 +927,38 @@ function createFloatingHeart() {
 
 
   heart.style.left =
-    Math.random() * 100
+    Math.random()
+    * 100
     + "vw";
 
 
   heart.style.bottom =
-    "-35px";
+    "-40px";
 
 
-  const size =
-    18 +
-    Math.random() * 18;
+  heart.style.opacity =
+    ".85";
 
 
-  heart.style.transform =
-    `scale(${size / 24})`;
-
-
-  document.body.appendChild(
-    heart
-  );
+  document.body
+    .appendChild(
+      heart
+    );
 
 
   requestAnimationFrame(
     () => {
 
       const rotation =
-        Math.random() * 80 - 40;
+        Math.random()
+        * 80
+        - 40;
 
 
       heart.style.transform =
         `
           translateY(-110vh)
           rotate(${rotation}deg)
-          scale(${size / 24})
         `;
 
 
